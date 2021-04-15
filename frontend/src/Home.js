@@ -3,7 +3,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    useHistory
   } from "react-router-dom";
 import axios from 'axios'
 
@@ -15,6 +16,8 @@ const Home = () => {
     const [author, setAuthor] = useState('')
     const [modalActive, setModalActive] = useState(false)
     const [questionsList, setQuestionsList] = useState([])
+    const history = useHistory()
+
 
     useEffect(() => {
       const intervalID = setInterval(() => {
@@ -67,13 +70,18 @@ const Home = () => {
         setQuestion('')
     }
 
+    const goHome = () => {
+        history.push('/')
+    }
+
     const logout = async () => {
-        try {
-            await axios.post('/account/logout', { username: author })
-            goHome()
-        } catch {
-            window.alert("did not log out")
-        }
+      try {
+          await axios.post('/account/logout', { username: author })
+          goHome()
+      }
+      catch (err) {
+        window.alert(`error occured while logging out: ${err.response.data}`)
+      }
     }
 
     if (author !== '') {
@@ -81,51 +89,65 @@ const Home = () => {
           <>
             <div className="container">
                 <br></br>
-                <center><h1> <b>Campuswire Lite </b></h1></center>
+                <center><h1> <b>Campuswire Lite </b></h1>
+                <br></br>
                 Welcome {author}!
-                {msg}
+                <br></br>
                 <br></br>
                 <button type="button" className="btn btn-primary" onClick={modalAppear}>Add new question</button>
                 <br></br>
                 <br></br>
                 <button type="button" className="btn btn-primary" onClick={logout}>Logout</button>
+                <br></br>
+                </center>
             </div>
     
             {modalActive
               && (
-              <div>
+                <center>
+              <div className="card" style={{ width: '25rem' }}>
+                <center>
+                  <br></br>
                   <h5>Add Question</h5>
-                  <input onChange={e => setQuestion(e.target.value)} placeholder="Write your question here..." />
+                  <input onChange={e => setQuestion(e.target.value)} placeholder="Write question here..." />
                   <br />
-                  <button onClick={() => addQuestion(question, author)}>Submit Question</button>
-                  <button onClick={() => setModalActive(false)}>Cancel</button>
+                  <button type="button" className="btn btn-primary" onClick={() => addQuestion(question, author)}>Submit Question</button>
+                  <button type="button" className="btn btn-warning" onClick={() => setModalActive(false)}>Cancel</button>
+                  <br></br>
+                  </center>
+                  <br></br>
                 </div>
+                </center>
               )}
             <div>
+              <br></br>
               {
-            questionsList.map(q => (
-              <div className="post">
-                <div className="post-title" style={{ size: '16pt', color: 'blue', fontWeight: 'bold' }}>
-                  Question: {q.questionText}
-                </div>
-                <div className="body">
-                  Author: {q.author}
-                </div>
-                <div className="answer">
-                  Answer: {q.answer}
-                </div>
+              questionsList.map(q => (
+                <center>
+                <div className="card" style={{ width: '18rem' }}>
+                  <center>
+                  <div className="post-title" style={{ size: '16pt', color: 'black', fontWeight: 'bold' }}>
+                    Question: {q.questionText}
+                  </div>
+                  <div className="body">
+                    Author: {q.author}
+                  </div>
+                  <div className="answer">
+                    Answer: {q.answer}
+                  </div>
                 <input
-                  onChange={e => setAnswer(e.target.value)}
-                  placeholder="Write your answer here..."
+                    onChange={e => setAnswer(e.target.value)}
+                    placeholder="Write your answer here..."
                 />
-                <button onClick={() => answerQuestion(q._id, answer, author)}>
+                <br></br>
+                <button type="button" className="btn btn-primary" onClick={() => answerQuestion(q._id, answer, author)}>
                   Submit Answer
                 </button>
-                <br />
-                <br />
-                <br />
-              </div>
-            ))
+                  </center>
+                </div>
+                <br></br>
+                </center>
+              ))
             }
             </div>
           </>
@@ -136,17 +158,18 @@ const Home = () => {
         <>
           <div className="container">
             <br></br>
-            <center><h1> <b>Campuswire Lite </b></h1></center>
-            <li>Want to ask a question?<Link to="/login"> Login Here </Link> </li>
+            <center><h1> <b>Campuswire Lite </b></h1>
+              Want to ask a question?<Link to="/login"> Login Here </Link> 
+            </center>
         </div>
-          <br />
-          <br />
-    
+          <br />    
           <div className="posts-container">
             {
             questionsList.map(q => (
-              <div className="post">
-                <div className="post-title" style={{ size: '16pt', color: 'blue', fontWeight: 'bold' }}>
+              <center>
+              <div className="card" style={{ width: '18rem' }}>
+                <center>
+                <div className="post-title" style={{ size: '16pt', color: 'black', fontWeight: 'bold' }}>
                   Question: {q.questionText}
                 </div>
                 <div className="body">
@@ -155,9 +178,10 @@ const Home = () => {
                 <div className="answer">
                   Answer: {q.answer}
                 </div>
-                <br />
-                <br />
+                </center>
               </div>
+              <br></br>
+              </center>
             ))
             }
           </div>

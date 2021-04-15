@@ -35500,28 +35500,54 @@ const Login = () => {
 
   const login = async () => {
     try {
-      console.log("successfully logged in");
       await _axios.default.post('/account/login', {
         username,
         password
       });
       goHome();
+      console.log("successfully logged in");
     } catch {
+      console.log("couldn't log in");
       window.alert('could not log in');
     }
   };
 
-  return /*#__PURE__*/_react.default.createElement("div", null, "Username: ", /*#__PURE__*/_react.default.createElement("input", {
-    onChange: e => setUsername(e.target.value)
-  }), "Password: ", /*#__PURE__*/_react.default.createElement("input", {
-    onChange: e => setPassword(e.target.value)
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("h1", null, " ", /*#__PURE__*/_react.default.createElement("b", null, "Campuswire Lite ")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card",
+    style: {
+      width: '20rem'
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    class: "card-body"
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    id: "myForm",
+    method: "post"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "post-title",
+    style: {
+      size: '30pt',
+      color: 'black',
+      fontWeight: 'bold'
+    }
+  }, "Login"), /*#__PURE__*/_react.default.createElement("label", null, "Username"), /*#__PURE__*/_react.default.createElement("input", {
+    className: "form-control",
+    value: username,
+    onChange: e => setUsername(e.target.value),
+    placeholder: "Enter username"
+  }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("label", null, "Password"), /*#__PURE__*/_react.default.createElement("input", {
+    className: "form-control",
+    value: password,
+    onChange: e => setPassword(e.target.value),
+    placeholder: "Enter password"
   }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    class: "btn btn-primary",
     onClick: () => login(username, password)
-  }, " Login "), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
-    className: "form-group"
-  }, "Don't have an account?", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }, " Login "), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), "Don't have an account?", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/signup"
-  }, " Sign up Here ")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  }, " Sign up Here ")))))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/signup"
   }, /*#__PURE__*/_react.default.createElement(_Signup.default, null))));
 };
@@ -35571,17 +35597,39 @@ const Signup = () => {
     }
   };
 
-  return /*#__PURE__*/_react.default.createElement("div", null, "Username: ", /*#__PURE__*/_react.default.createElement("input", {
-    onChange: e => setUsername(e.target.value)
-  }), "Password: ", /*#__PURE__*/_react.default.createElement("input", {
-    onChange: e => setPassword(e.target.value)
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("h1", null, " ", /*#__PURE__*/_react.default.createElement("b", null, "Campuswire Lite ")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card",
+    style: {
+      width: '20rem'
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    class: "card-body"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "post-title",
+    style: {
+      size: '30pt',
+      color: 'black',
+      fontWeight: 'bold'
+    }
+  }, "Signup"), /*#__PURE__*/_react.default.createElement("label", null, "Username"), /*#__PURE__*/_react.default.createElement("input", {
+    className: "form-control",
+    value: username,
+    onChange: e => setUsername(e.target.value),
+    placeholder: "Enter username"
+  }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("label", null, "Password"), /*#__PURE__*/_react.default.createElement("input", {
+    className: "form-control",
+    value: password,
+    onChange: e => setPassword(e.target.value),
+    placeholder: "Enter password"
   }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    class: "btn btn-primary",
     onClick: () => signup(username, password)
-  }, " register user "), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
-    className: "form-group"
-  }, "Already have an account?", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }, " Sign up "), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), "Already have an account?", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/login"
-  }, " Login Here ")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  }, " Login Here "))))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/login"
   }, /*#__PURE__*/_react.default.createElement(_Login.default, null))));
 };
@@ -35614,6 +35662,7 @@ const Home = () => {
   const [author, setAuthor] = (0, _react.useState)('');
   const [modalActive, setModalActive] = (0, _react.useState)(false);
   const [questionsList, setQuestionsList] = (0, _react.useState)([]);
+  const history = (0, _reactRouterDom.useHistory)();
   (0, _react.useEffect)(() => {
     const intervalID = setInterval(() => {
       getQuestions();
@@ -35670,21 +35719,25 @@ const Home = () => {
     setQuestion('');
   };
 
+  const goHome = () => {
+    history.push('/');
+  };
+
   const logout = async () => {
     try {
       await _axios.default.post('/account/logout', {
         username: author
       });
       goHome();
-    } catch {
-      window.alert("did not log out");
+    } catch (err) {
+      window.alert(`error occured while logging out: ${err.response.data}`);
     }
   };
 
   if (author !== '') {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
       className: "container"
-    }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("h1", null, " ", /*#__PURE__*/_react.default.createElement("b", null, "Campuswire Lite "))), "Welcome ", author, "!", msg, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
+    }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("h1", null, " ", /*#__PURE__*/_react.default.createElement("b", null, "Campuswire Lite ")), /*#__PURE__*/_react.default.createElement("br", null), "Welcome ", author, "!", /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
       type: "button",
       className: "btn btn-primary",
       onClick: modalAppear
@@ -35692,20 +35745,32 @@ const Home = () => {
       type: "button",
       className: "btn btn-primary",
       onClick: logout
-    }, "Logout")), modalActive && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h5", null, "Add Question"), /*#__PURE__*/_react.default.createElement("input", {
+    }, "Logout"), /*#__PURE__*/_react.default.createElement("br", null))), modalActive && /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "card",
+      style: {
+        width: '25rem'
+      }
+    }, /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("h5", null, "Add Question"), /*#__PURE__*/_react.default.createElement("input", {
       onChange: e => setQuestion(e.target.value),
-      placeholder: "Write your question here..."
+      placeholder: "Write question here..."
     }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
+      type: "button",
+      className: "btn btn-primary",
       onClick: () => addQuestion(question, author)
     }, "Submit Question"), /*#__PURE__*/_react.default.createElement("button", {
+      type: "button",
+      className: "btn btn-warning",
       onClick: () => setModalActive(false)
-    }, "Cancel")), /*#__PURE__*/_react.default.createElement("div", null, questionsList.map(q => /*#__PURE__*/_react.default.createElement("div", {
-      className: "post"
-    }, /*#__PURE__*/_react.default.createElement("div", {
+    }, "Cancel"), /*#__PURE__*/_react.default.createElement("br", null)), /*#__PURE__*/_react.default.createElement("br", null))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("br", null), questionsList.map(q => /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "card",
+      style: {
+        width: '18rem'
+      }
+    }, /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("div", {
       className: "post-title",
       style: {
         size: '16pt',
-        color: 'blue',
+        color: 'black',
         fontWeight: 'bold'
       }
     }, "Question: ", q.questionText), /*#__PURE__*/_react.default.createElement("div", {
@@ -35715,31 +35780,36 @@ const Home = () => {
     }, "Answer: ", q.answer), /*#__PURE__*/_react.default.createElement("input", {
       onChange: e => setAnswer(e.target.value),
       placeholder: "Write your answer here..."
-    }), /*#__PURE__*/_react.default.createElement("button", {
+    }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
+      type: "button",
+      className: "btn btn-primary",
       onClick: () => answerQuestion(q._id, answer, author)
-    }, "Submit Answer"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null)))));
+    }, "Submit Answer"))), /*#__PURE__*/_react.default.createElement("br", null)))));
   }
 
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("h1", null, " ", /*#__PURE__*/_react.default.createElement("b", null, "Campuswire Lite "))), /*#__PURE__*/_react.default.createElement("li", null, "Want to ask a question?", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("h1", null, " ", /*#__PURE__*/_react.default.createElement("b", null, "Campuswire Lite ")), "Want to ask a question?", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/login"
-  }, " Login Here "), " ")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+  }, " Login Here "))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
     className: "posts-container"
-  }, questionsList.map(q => /*#__PURE__*/_react.default.createElement("div", {
-    className: "post"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, questionsList.map(q => /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "card",
+    style: {
+      width: '18rem'
+    }
+  }, /*#__PURE__*/_react.default.createElement("center", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "post-title",
     style: {
       size: '16pt',
-      color: 'blue',
+      color: 'black',
       fontWeight: 'bold'
     }
   }, "Question: ", q.questionText), /*#__PURE__*/_react.default.createElement("div", {
     className: "body"
   }, "Author: ", q.author), /*#__PURE__*/_react.default.createElement("div", {
     className: "answer"
-  }, "Answer: ", q.answer), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null)))));
+  }, "Answer: ", q.answer))), /*#__PURE__*/_react.default.createElement("br", null)))));
 };
 
 var _default = Home;
@@ -35823,7 +35893,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62772" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60305" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

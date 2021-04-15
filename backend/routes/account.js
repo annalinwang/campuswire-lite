@@ -20,7 +20,6 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', (req, res, next) => {
   const { username, password } = req.body
-
    User.findOne({ username, password }, (err, user) => {
     if (err) {
       return next(new Error('username, password doesnt exist'))
@@ -28,15 +27,15 @@ router.post('/login', (req, res, next) => {
     if (user) {
       req.session.username = username
       req.session.password = password
-      console.log(req.session)
+      console.log(`logged in as ${username}`)
       res.send(`logged in as ${username}`)
     } else {
-      res.send(`failed to log in`)
+      return next(new Error('user does not exist'))
     }
   })
 })
 
-router.post('/logout', isAuthenticated, (req, res) => {
+router.post('/logout', (req, res) => {
     const user = req.session.username
     req.session.username = ''
     req.session.password = ''
